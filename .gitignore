@@ -1,0 +1,45 @@
+__pycache__
+*.pth
+*/**/__pycache__
+*/*.pyc
+*/**/*.pyc
+*/**/**/*.pyc
+*/**/**/**/*.pyc
+*/**/**/**/**/*.pyc
+.mypy_cache
+*/*.out
+
+*/results
+*/results/
+*/result
+*/result/
+
+*/models
+*/models/
+*/data/
+
+*/__pycache__/
+*/saved_models/
+*/fig/
+*/runs/
+*/fig1/
+*/weights/
+*/models/
+*/data/
+*/buffers/
+*/logged_files/
+*/kip/
+
+# IPython notebook checkpoints
+.ipynb_checkpoints
+
+# Editor temporaries
+*.swn
+*.swo
+*.swp
+*~
+
+# macOS dir files
+.DS_Store
+
+.gdb_history
