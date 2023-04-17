@@ -32,7 +32,7 @@ def main():
     parser.add_argument('--data_path', type=str, default='data', help='dataset path')
     parser.add_argument('--save_path', type=str, default='results', help='path to save results')
     parser.add_argument('--dis_metric', type=str, default='ours', help='distance metric')
-    parser.add_argument('--poisoned_dataset', action='store_true')
+    parser.add_argument('--naive', action='store_true')
     parser.add_argument('--doorping', action='store_true')
     parser.add_argument('--test_model', action='store_true')
     parser.add_argument('--ori', type=float, default=1.0)
@@ -57,7 +57,7 @@ def main():
     args.invisible_trigger = False
 
     name = args.model + '_' + args.dataset + '_' + str(args.ipc) + 'ipc'
-    if args.poisoned_dataset:
+    if args.naive:
         name += '_poisoned_portion_' + str(args.portion) + '_size_' + str(args.backdoor_size) + '_ori_' + str(args.ori)
     if args.doorping:
         name += '_doorping_portion_' + str(args.portion) + '_size_' + str(args.backdoor_size) + '_ori_' + str(args.ori)
@@ -87,10 +87,10 @@ def main():
     dst_train, _ = torch.utils.data.random_split(dst_train, [length,rest])
 
     args.clean = False
-    if not args.poisoned_dataset and not args.doorping and not args.invisible:
-        args.poisoned_dataset = True
+    if not args.naive and not args.doorping and not args.invisible:
+        args.naive = True
         _, _, _, _, _, _, _, _, testloader_trigger = get_dataset(args.dataset, args.data_path, args)
-        args.poisoned_dataset = False
+        args.naive = False
     else:
         _, _, _, _, _, _, _, _, testloader_trigger = get_dataset(args.dataset, args.data_path, args)
 

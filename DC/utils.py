@@ -42,9 +42,9 @@ def get_dataset(dataset, data_path, args):
         std = [0.3530]
         transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize(mean=mean, std=std)])
         dst_train = FashionMNIST_BADNETS(data_path, train=True, download=True,
-                    transform=transform, trigger_label=0, portion=args.portion, backdoor_size=args.backdoor_size, backdoor=args.poisoned_dataset, clean_test=args.clean)
+                    transform=transform, trigger_label=0, portion=args.portion, backdoor_size=args.backdoor_size, backdoor=args.naive, clean_test=args.clean)
         dst_test = FashionMNIST_BADNETS(data_path, train=False, download=True,
-                    transform=transform, trigger_label=0, portion=args.portion, backdoor_size=args.backdoor_size, backdoor=args.poisoned_dataset, clean_test=args.clean)
+                    transform=transform, trigger_label=0, portion=args.portion, backdoor_size=args.backdoor_size, backdoor=args.naive, clean_test=args.clean)
         # dst_train = datasets.FashionMNIST(data_path, train=True, download=True, transform=transform) # no augmentation
         # dst_test = datasets.FashionMNIST(data_path, train=False, download=True, transform=transform)
         class_names = dst_train.classes
@@ -57,9 +57,9 @@ def get_dataset(dataset, data_path, args):
         std = [0.1980, 0.2010, 0.1970]
         transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize(mean=mean, std=std)])
         dst_train = SVHN_BADNETS(data_path, split="train", download=True,
-                    transform=transform, trigger_label=0, portion=args.portion, backdoor_size=args.backdoor_size, backdoor=args.poisoned_dataset, clean_test=args.clean)
+                    transform=transform, trigger_label=0, portion=args.portion, backdoor_size=args.backdoor_size, backdoor=args.naive, clean_test=args.clean)
         dst_test = SVHN_BADNETS(data_path, split="test", download=True,
-                    transform=transform, trigger_label=0, portion=args.portion, backdoor_size=args.backdoor_size, backdoor=args.poisoned_dataset, clean_test=args.clean)
+                    transform=transform, trigger_label=0, portion=args.portion, backdoor_size=args.backdoor_size, backdoor=args.naive, clean_test=args.clean)
         class_names = [str(c) for c in range(num_classes)]
 
     elif dataset == 'STL10':
@@ -70,9 +70,9 @@ def get_dataset(dataset, data_path, args):
         std = [0.2023, 0.1994, 0.2010]
         transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize(mean=mean, std=std)])
         dst_train = STL10_BADNETS(data_path, split="train", download=True,
-                    transform=transform, trigger_label=0, portion=args.portion, backdoor_size=args.backdoor_size, backdoor=args.poisoned_dataset, clean_test=args.clean)
+                    transform=transform, trigger_label=0, portion=args.portion, backdoor_size=args.backdoor_size, backdoor=args.naive, clean_test=args.clean)
         dst_test = STL10_BADNETS(data_path, split="test", download=True,
-                    transform=transform, trigger_label=0, portion=args.portion, backdoor_size=args.backdoor_size, backdoor=args.poisoned_dataset, clean_test=args.clean)
+                    transform=transform, trigger_label=0, portion=args.portion, backdoor_size=args.backdoor_size, backdoor=args.naive, clean_test=args.clean)
         class_names = dst_train.classes
 
     elif dataset == 'CIFAR10':
@@ -83,9 +83,9 @@ def get_dataset(dataset, data_path, args):
         std = [0.2023, 0.1994, 0.2010]
         transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize(mean=mean, std=std)])
         dst_train = CIFAR10_BADNETS(data_path, train=True, download=True,
-                    transform=transform, trigger_label=0, portion=args.portion, backdoor_size=args.backdoor_size, backdoor=args.poisoned_dataset, clean_test=args.clean)
+                    transform=transform, trigger_label=0, portion=args.portion, backdoor_size=args.backdoor_size, backdoor=args.naive, clean_test=args.clean)
         dst_test = CIFAR10_BADNETS(data_path, train=False, download=True,
-                    transform=transform, trigger_label=0, portion=args.portion, backdoor_size=args.backdoor_size, backdoor=args.poisoned_dataset, clean_test=args.clean)
+                    transform=transform, trigger_label=0, portion=args.portion, backdoor_size=args.backdoor_size, backdoor=args.naive, clean_test=args.clean)
         # dst_train = datasets.CIFAR10(data_path, train=True, download=True, transform=transform) # no augmentation
         # dst_test = datasets.CIFAR10(data_path, train=False, download=True, transform=transform)
         class_names = dst_train.classes
@@ -98,9 +98,9 @@ def get_dataset(dataset, data_path, args):
         std = [0.2673, 0.2564, 0.2762]
         transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize(mean=mean, std=std)])
         dst_train = CIFAR100_BADNETS(data_path, train=True, download=True,
-                    transform=transform, trigger_label=0, portion=args.portion, backdoor_size=args.backdoor_size, backdoor=args.poisoned_dataset, clean_test=args.clean)
+                    transform=transform, trigger_label=0, portion=args.portion, backdoor_size=args.backdoor_size, backdoor=args.naive, clean_test=args.clean)
         dst_test = CIFAR100_BADNETS(data_path, train=False, download=True,
-                    transform=transform, trigger_label=0, portion=args.portion, backdoor_size=args.backdoor_size, backdoor=args.poisoned_dataset, clean_test=args.clean)
+                    transform=transform, trigger_label=0, portion=args.portion, backdoor_size=args.backdoor_size, backdoor=args.naive, clean_test=args.clean)
         class_names = dst_train.classes
 
     else:
