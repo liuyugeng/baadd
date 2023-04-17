@@ -1049,12 +1049,12 @@ def update_trigger(net, init_trigger, layer, device, mask, topk, alpha):
 
         output = output[:, key_to_maximize]
         if i == 0:
-            init_output = output
+            init_output = output.detach()
         loss = criterion(output, alpha*init_output)
         if loss.item() < cost_threshold:
             break
 
-        loss.backward(retain_graph=True)
+        loss.backward()
         init_trigger.grad.data.mul_(mask)
         
         optimizer.step()

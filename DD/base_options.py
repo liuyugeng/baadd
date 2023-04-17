@@ -125,8 +125,6 @@ class State(object):
                 name += '_size_{}x{}_ori_{}'.format(str(opt.backdoor_size), str(opt.backdoor_size), str(opt.ori))
             if opt.test_nets_type == 'shadow':
                 name += '_shadow'
-            if opt.meminf:
-                name += '_meminf'
             if opt.trajectory:
                 name += '_trajectory'
             if opt.support_dataset is not None:

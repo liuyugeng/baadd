@@ -284,7 +284,7 @@ class Trainer(object):
         optimizer = optim.Adam([state.init_trigger], lr=0.08, betas=[0.9, 0.99])
         criterion = torch.nn.MSELoss().to(state.device)
 
-        init_ooutput = 0
+        init_output = 0
         cost_threshold = 0.5
 
         for i in range(1000):
@@ -293,8 +293,8 @@ class Trainer(object):
             output = self._get_middle_output(state.init_trigger, model, state.layer, weights)
             output = output[:, key_to_maximize]
             if i == 0:
-                init_ooutput = output
-            loss = criterion(output, state.alpha*init_ooutput)
+                init_output = output.detach()
+            loss = criterion(output, state.alpha*init_output)
             # logging.info(loss.item())
             if loss.item() < cost_threshold:
                 break
