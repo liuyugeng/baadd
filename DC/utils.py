@@ -1048,7 +1048,9 @@ def update_trigger(net, init_trigger, layer, device, mask, topk, alpha):
         output = get_middle_output(net, init_trigger, layer)
 
         output = output[:, key_to_maximize]
-        loss = criterion(output, alpha*output)
+        if i == 0:
+            init_output = output
+        loss = criterion(output, alpha*init_output)
         if loss.item() < cost_threshold:
             break
 

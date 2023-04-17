@@ -11,3 +11,4 @@ dependencies:
     - torchvision
     - torchaudio
     - adversarial-robustness-toolbox
+    - pandas
