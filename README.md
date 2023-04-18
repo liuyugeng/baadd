@@ -9,7 +9,7 @@ In the project, we propose three different backdoor attacks, *NAIVEATTACK*, *DOO
 NAIVEATTACK inserts a pre-defined trigger into the original training dataset before the distillation.
 DOORPING is an advanced method, which optimizes the trigger during the distillation process.
 
-Limited by the [DD code](https://github.com/SsnL/dataset-distillation), PyTorch 2.0 are not supported.
+Limited by the [DD code](https://github.com/SsnL/dataset-distillation), [PyTorch 2.0](https://pytorch.org/get-started/pytorch-2.0/) are not supported.
 
 ## Requirments
 A suitable [conda](https://conda.io/) environment named `baadd` can be created and activated with:
