@@ -45,6 +45,20 @@ Due to the different arguments between DD and DC code, we list the arguments in 
 </tr>
 </tbody></table>
 
+<table><tbody>
+<!-- TABLE BODY -->
+<tr>
+<td align="center">Model Architecture</td>
+<td align="center">AlexNet</td>
+<td align="center">ConvNet</td>
+</tr>
+<tr>
+<td align="center">Arguments</td>
+<td align="center">AlexCifarNet</td>
+<td align="center">ConvNet</td>
+</tr>
+</tbody></table>
+
 For NAIVEATTACK, run this mode via
 
 ```
