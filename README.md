@@ -54,7 +54,7 @@ python DD/main.py --mode distill_basic --dataset Cifar10 --arch AlexCifarNet --d
 For DOORPING, run this mode via
 
 ```
-python DD/main.py --mode distill_basic --dataset Cifar10 --arch AlexCifarNet --distill_lr 0.001 --doorping--dataset_root /path/to/data --results_dir /path/to/results
+python DD/main.py --mode distill_basic --dataset Cifar10 --arch AlexCifarNet --distill_lr 0.001 --doorping --dataset_root /path/to/data --results_dir /path/to/results
 ```
 
 For INVISIBLE, run this mode via
