@@ -8,6 +8,8 @@ Currently, we apply two distillation techniques, namely [Dataset Distillation (D
 In the project, we propose three different backdoor attacks, *NAIVEATTACK*, *DOORPING*, and *INVISIBLE*.
 NAIVEATTACK inserts a pre-defined trigger into the original training dataset before the distillation.
 DOORPING is an advanced method, which optimizes the trigger during the distillation process.
+Required by the reviewers, we need to add another backdoor method.
+So, we choose [Invisible Backdoor Attacks on Deep Neural Networks via Steganography and Regularization](https://arxiv.org/pdf/1909.02742.pdf).
 
 Limited by the [DD code](https://github.com/SsnL/dataset-distillation), [PyTorch 2.0](https://pytorch.org/get-started/pytorch-2.0/) are not supported.
 
