@@ -5,7 +5,61 @@
 
 This is official code of our NDSS 23 paper Backdoor Attacks Against Dataset Distillation.
 Currently, we apply two distillation techniques, namely [Dataset Distillation (DD)](https://arxiv.org/pdf/1811.10959.pdf) and [Dataset Condensation with Gradient Matching (DC)](https://arxiv.org/pdf/2006.05929.pdf).
-In the project, we propose two different backdoor attacks *NAIVEATTACK* and *DOORPING*.
+In the project, we propose three different backdoor attacks, *NAIVEATTACK*, *DOORPING*, and *INVISIBLE*.
 NAIVEATTACK inserts a pre-defined trigger into the original training dataset before the distillation.
 DOORPING is an advanced method, which optimizes the trigger during the distillation process.
+
+Limited by the [DD code](https://github.com/SsnL/dataset-distillation), PyTorch 2.0 are not supported.
+
+## Requirments
+A suitable [conda](https://conda.io/) environment named `baadd` can be created and activated with:
+
+```
+conda env create -f environment.yaml
+conda activate baadd
+```
+
+## Run Backdoor Attacks against DD
+We support five different dataset: Fashion-MNIST (FMNIST), CIFAR10, CIFAR100, STL10, and SVHN.
+And two attack architectures: AlexNet and ConvNet
+
+Due to the different arguments between DD and DC code, we list the arguments in the following:
+
+<table><tbody>
+<!-- TABLE BODY -->
+<tr>
+<td align="center">Dataset Name</td>
+<td align="center">Fashion-MNIST</td>
+<td align="center">CIFAR10</td>
+<td align="center">CIFAR100</td>
+<td align="center">STL10</td>
+<td align="center">SVHN</td>
+</tr>
+<tr>
+<td align="center">Arguments</td>
+<td align="center">FashionMNIST</td>
+<td align="center">Cifar10</td>
+<td align="center">Cifar100</td>
+<td align="center">STL10</td>
+<td align="center">SVHN</td>
+</tr>
+</tbody></table>
+
+For NAIVEATTACK, run this mode via
+
+```
+python DD/main.py --mode distill_basic --dataset Cifar10 --arch AlexCifarNet --distill_lr 0.001 --naive --dataset_root /path/to/data --results_dir /path/to/results
+```
+
+For DOORPING, run this mode via
+
+```
+python DD/main.py --mode distill_basic --dataset Cifar10 --arch AlexCifarNet --distill_lr 0.001 --doorping--dataset_root /path/to/data --results_dir /path/to/results
+```
+
+For INVISIBLE, run this mode via
+
+```
+python DD/main.py --mode distill_basic --dataset Cifar10 --arch AlexCifarNet --distill_lr 0.001 --invisible --dataset_root /path/to/data --results_dir /path/to/results
+```
 
