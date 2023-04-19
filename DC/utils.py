@@ -314,7 +314,7 @@ def epoch(mode, dataloader, net, optimizer, criterion, args, aug):
                 img = augment(img, args.dc_aug_param, device=args.device)
         lab = datum[1].long().to(args.device)
 
-        if args.trojann_trigger:
+        if args.doorping_trigger:
             img[:] = img[:] * (1 - args.mask) + args.init_trigger[0] * args.mask
             lab[:] = args.trigger_label
 
@@ -365,13 +365,13 @@ def evaluate_synset(it_eval, net, images_train, labels_train, testloader, testlo
             optimizer = torch.optim.SGD(net.parameters(), lr=lr, momentum=0.9, weight_decay=0.0005)
 
     time_train = time.time() - start
-    args.trojann_trigger = False
+    args.doorping_trigger = False
     loss_test, acc_test = epoch('test', testloader, net, optimizer, criterion, args, aug = False)
             
     if args.doorping:
-        args.trojann_trigger = True
+        args.doorping_trigger = True
         loss_test_trigger, acc_test_trigger = epoch('test', testloader, net, optimizer, criterion, args, aug = False)
-        args.trojann_trigger = False
+        args.doorping_trigger = False
 
     elif args.invisible:
         args.invisible_trigger = True

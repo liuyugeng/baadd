@@ -53,7 +53,7 @@ def main():
     args.device = 'cuda' if torch.cuda.is_available() else 'cpu'
     args.dsa_param = ParamDiffAug()
     args.dsa = True if args.method == 'DSA' else False
-    args.trojann_trigger = False
+    args.doorping_trigger = False
     args.invisible_trigger = False
 
     name = args.model + '_' + args.dataset + '_' + str(args.ipc) + 'ipc'
@@ -113,7 +113,7 @@ def main():
 
     data_save = []
     if args.doorping:
-        trojann_perm = np.random.permutation(len(dst_train))[0: int(len(dst_train) * args.portion)]
+        doorping_perm = np.random.permutation(len(dst_train))[0: int(len(dst_train) * args.portion)]
         input_size = (im_size[0], im_size[1], channel)
         trigger_loc = (im_size[0]-1-args.backdoor_size, im_size[0]-1)
         args.init_trigger = np.zeros(input_size)
@@ -133,7 +133,7 @@ def main():
         args.init_trigger = args.init_trigger.requires_grad_() # size 1*3x32x32
 
     if args.invisible:
-        trojann_perm = np.random.permutation(len(dst_train))[0: int(len(dst_train) * args.portion)]
+        doorping_perm = np.random.permutation(len(dst_train))[0: int(len(dst_train) * args.portion)]
 
         for img, label in dst_test:
             if label == args.trigger_label:
@@ -174,12 +174,12 @@ def main():
 
         if args.doorping:
             # put the tigger into images
-            images_all[trojann_perm] = images_all[trojann_perm]*(1-args.mask) + args.mask*args.init_trigger[0]
-            labels_all[trojann_perm] = args.trigger_label
+            images_all[doorping_perm] = images_all[doorping_perm]*(1-args.mask) + args.mask*args.init_trigger[0]
+            labels_all[doorping_perm] = args.trigger_label
 
         if args.invisible:
-            images_all[trojann_perm] = args.init_trigger[0] + images_all[trojann_perm]
-            labels_all[trojann_perm] = args.trigger_label
+            images_all[doorping_perm] = args.init_trigger[0] + images_all[doorping_perm]
+            labels_all[doorping_perm] = args.trigger_label
 
 
         for i, lab in enumerate(labels_all):
@@ -348,11 +348,11 @@ def main():
 
                 if args.doorping:
                     args.init_trigger = update_trigger(net, args.init_trigger, args.layer, args.device, args.mask, args.topk, args.alpha)
-                    images_all[trojann_perm] = images_all[trojann_perm]*(1-args.mask) + args.mask*args.init_trigger[0]
+                    images_all[doorping_perm] = images_all[doorping_perm]*(1-args.mask) + args.mask*args.init_trigger[0]
 
                 if args.invisible:
                     args.init_trigger = update_inv_trigger(net, args.init_trigger, args.layer, args.device, std, args.black)
-                    images_all[trojann_perm] = images_all[trojann_perm] + args.init_trigger[0]
+                    images_all[doorping_perm] = images_all[doorping_perm] + args.init_trigger[0]
 
             loss_avg /= (num_classes*args.outer_loop)
 
