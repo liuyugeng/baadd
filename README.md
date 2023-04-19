@@ -79,3 +79,72 @@ For INVISIBLE, run this mode via
 python DD/main.py --mode distill_basic --dataset Cifar10 --arch AlexCifarNet --distill_lr 0.001 --invisible --dataset_root /path/to/data --results_dir /path/to/results
 ```
 
+## Run Backdoor Attacks against DC
+
+<table><tbody>
+<!-- TABLE BODY -->
+<tr>
+<td align="center">Dataset Name</td>
+<td align="center">Fashion-MNIST</td>
+<td align="center">CIFAR10</td>
+<td align="center">CIFAR100</td>
+<td align="center">STL10</td>
+<td align="center">SVHN</td>
+</tr>
+<tr>
+<td align="center">Arguments</td>
+<td align="center">FashionMNIST</td>
+<td align="center">CIFAR10</td>
+<td align="center">CIFAR100</td>
+<td align="center">STL10</td>
+<td align="center">SVHN</td>
+</tr>
+</tbody></table>
+
+<table><tbody>
+<!-- TABLE BODY -->
+<tr>
+<td align="center">Model Architecture</td>
+<td align="center">AlexNet</td>
+<td align="center">ConvNet</td>
+</tr>
+<tr>
+<td align="center">Arguments</td>
+<td align="center">AlexNet</td>
+<td align="center">ConvNet</td>
+</tr>
+</tbody></table>
+
+For NAIVEATTACK, run this mode via
+
+```
+python DC/main.py --dataset CIFAR10 --model AlexNet --naive --data_path /path/to/data --save_path /path/to/results
+```
+
+For DOORPING, run this mode via
+
+```
+python DC/main.py --dataset CIFAR10 --model AlexNet --doorping --data_path /path/to/data --save_path /path/to/results
+```
+
+For INVISIBLE, run this mode via
+
+```
+python DC/main.py --dataset CIFAR10 --model AlexNet --invisible --data_path /path/to/data --save_path /path/to/results
+```
+
+## Citation
+Please cite this paper in your publications if it helps your research:
+
+    @inproceedings{LLBSZ23,
+    author = {Yugeng Liu and Zheng Li and Michael Backes and Yun Shen and Yang Zhang},
+    title = {{Backdoor Attacks Against Dataset Distillation}},
+    booktitle = {{NDSS}},
+    year = {2023}
+    }
+
+
+
+## License
+
+Baadd is freely available for free non-commercial use, and may be redistributed under these conditions. For commercial queries, please drop an e-mail at yugeng.liu@cispa.de. We will send the detail agreement to you.
