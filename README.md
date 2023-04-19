@@ -142,9 +142,3 @@ Please cite this paper in your publications if it helps your research:
     booktitle = {{NDSS}},
     year = {2023}
     }
-
-
-
-## License
-
-Baadd is freely available for free non-commercial use, and may be redistributed under these conditions. For commercial queries, please drop an e-mail at yugeng.liu@cispa.de. We will send the detail agreement to you.
